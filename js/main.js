@@ -17,3 +17,18 @@ text.addEventListener("dblclick", () => {
     text.style.opacity = "0.5";
     setTimeout(() => text.style.opacity = "1", 2000);
 });
+
+
+// Generate Fireflies
+function createFireflies(count) {
+    for (let i = 0; i < count; i++) {
+        let firefly = document.createElement("div");
+        firefly.classList.add("firefly");
+        firefly.style.left = Math.random() * window.innerWidth + "px";
+        firefly.style.top = Math.random() * window.innerHeight + "px";
+        firefly.style.animationDuration = (Math.random() * 2 + 1) + "s";
+        document.body.appendChild(firefly);
+    }
+}
+
+createFireflies(20);
