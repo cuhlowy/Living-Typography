@@ -1,4 +1,3 @@
-// JS scripts placed here
 const text = document.getElementById("text");
 
 // Growing Effect on Click
@@ -17,7 +16,6 @@ text.addEventListener("dblclick", () => {
     text.style.opacity = "0.5";
     setTimeout(() => text.style.opacity = "1", 2000);
 });
-
 
 // Generate Fireflies
 function createFireflies(count) {

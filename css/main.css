@@ -79,7 +79,7 @@ body {
 .leaf:nth-child(even) { top: -50px; transform: rotate(-20deg); }
 
 /* Mist Effect */
-.mist {
+/* .mist {
     position: absolute;
     width: 100%;
     height: 50%;
@@ -87,13 +87,13 @@ body {
     background: rgba(255, 255, 255, 0.1);
     filter: blur(20px);
     animation: mist-move 10s infinite alternate;
-}
+} */
 
 /* Floating Mist Animation */
-@keyframes mist-move {
+/* @keyframes mist-move {
     0% { transform: translateX(-10px); }
     100% { transform: translateX(10px); }
-}
+} */
 
 /* Fireflies */
 .firefly {
@@ -116,4 +116,87 @@ body {
 @keyframes float {
     0% { transform: translateY(0px); }
     100% { transform: translateY(-20px); }
+}
+
+
+/* Base Text Style */
+#text {
+    font-size: 30px;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+    transition: all 1s ease-in-out;
+}
+
+/* Growing Effect */
+#text.grow {
+    font-size: 80px;
+    color: #2e7d32;
+    text-shadow: 2px 2px 5px rgba(0, 50, 0, 0.5);
+}
+
+/* Vines (Pseudo-elements for tendrils) */
+#text::before, #text::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 0;
+    background-color: #2e7d32;
+    border-radius: 2px;
+    transition: height 2s ease-in-out;
+}
+
+/* Left Vine */
+#text::before {
+    left: -10px;
+    bottom: 0;
+    transform: rotate(-20deg);
+}
+
+/* Right Vine */
+#text::after {
+    right: -10px;
+    bottom: 0;
+    transform: rotate(20deg);
+}
+
+/* Animate the vines when text grows */
+#text.grow::before, #text.grow::after {
+    height: 100px;
+}
+
+/* Leaves Growing on the Vines */
+.leaf {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Left Leaf */
+.leaf.left {
+    left: -15px;
+    bottom: 50px;
+    transform: rotate(-30deg) scale(0);
+}
+
+/* Right Leaf */
+.leaf.right {
+    right: -15px;
+    bottom: 60px;
+    transform: rotate(30deg) scale(0);
+}
+
+/* Animate leaves when text grows */
+#text.grow .leaf.left {
+    opacity: 1;
+    transform: rotate(-30deg) scale(1);
+}
+
+#text.grow .leaf.right {
+    opacity: 1;
+    transform: rotate(30deg) scale(1);
 }
