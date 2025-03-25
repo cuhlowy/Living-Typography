@@ -49,52 +49,6 @@ body {
     position: relative;
 }
 
-/* Tree Trunks */
-.tree {
-    position: absolute;
-    bottom: 0;
-    width: 30px;
-    height: 200px;
-    background-color: #3b322c;
-    border-radius: 10px;
-}
-
-/* Leaves */
-.leaf {
-    position: absolute;
-    background-color: #4caf50;
-    width: 80px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-/* Random Positioning for Trees and Leaves */
-.tree:nth-child(1) { left: 10%; height: 220px; }
-.tree:nth-child(2) { left: 30%; height: 250px; }
-.tree:nth-child(3) { left: 50%; height: 230px; }
-.tree:nth-child(4) { left: 70%; height: 240px; }
-.tree:nth-child(5) { left: 90%; height: 210px; }
-
-.leaf:nth-child(odd) { top: -30px; transform: rotate(20deg); }
-.leaf:nth-child(even) { top: -50px; transform: rotate(-20deg); }
-
-/* Mist Effect */
-/* .mist {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    filter: blur(20px);
-    animation: mist-move 10s infinite alternate;
-} */
-
-/* Floating Mist Animation */
-/* @keyframes mist-move {
-    0% { transform: translateX(-10px); }
-    100% { transform: translateX(10px); }
-} */
-
 /* Fireflies */
 .firefly {
     position: absolute;
@@ -200,3 +154,41 @@ body {
     opacity: 1;
     transform: rotate(30deg) scale(1);
 }
+
+
+
+/* Vines */
+.vine {
+    position: absolute;
+    width: 4px;
+    height: 0; /* Start at 0, will grow */
+    background-color: #2e7d32;
+    border-radius: 2px;
+    bottom: -5px; /* Attach it properly to the bottom of text */
+    transition: height 2s ease-in-out;
+}
+
+/* Left Vine */
+.vine.left {
+    left: 10%; /* Adjusted to match text */
+    transform: rotate(-15deg);
+}
+
+/* Right Vine */
+.vine.right {
+    right: 10%; /* Adjusted to match text */
+    transform: rotate(15deg);
+}
+
+/* Leaves */
+.vine .leaf {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+
