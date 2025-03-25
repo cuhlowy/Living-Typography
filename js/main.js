@@ -11,6 +11,26 @@ text.addEventListener("click", () => {
     }
 });
 
+function showGrassImage() {
+    let grass = document.getElementById("grass-image");
+
+    if (!grass) {
+        grass = document.createElement("img");
+        grass.id = "grass-image";
+        grass.src = "images/nh34_ox4b_210722.jpg"; // Update path if needed
+        document.body.appendChild(grass);
+    }
+
+    grass.classList.add("visible");
+}
+
+function hideGrassImage() {
+    const grass = document.getElementById("grass-image");
+    if (grass) {
+        grass.classList.remove("visible");
+    }
+}
+
 // Wind Effect (Mouse Move)
 document.addEventListener("mousemove", (event) => {
     let x = event.clientX / window.innerWidth - 0.5;
