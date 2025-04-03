@@ -22,8 +22,12 @@ body {
   .vine-text {
     font-size: 6rem;
     letter-spacing: 0.2em;
-    animation: swing 3s ease-in-out infinite alternate;
-  }
+    .vine-text {
+        font-size: 6rem;
+        letter-spacing: 0.2em;
+        transition: transform 0.1s linear;
+      }
+        }
   
   @keyframes swing {
     0% { transform: rotate(-5deg); }
@@ -58,57 +62,27 @@ body {
     transform: translateY(0);
   }
   
-  .leaf {
+  .leaf-slide {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Leaf_icon.svg/512px-Leaf_icon.svg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0;
-    animation: leaf-swing-in 1.2s ease forwards;
-    pointer-events: none;
-  }
-
-  .leaf-burst {
-    position: absolute;
-    width: 120px;
+    width: 150px;
     height: auto;
     pointer-events: none;
-    transform: translate(-50%, -50%) rotate(var(--rotate)) scale(var(--scale));
-    animation: leafFloat 1.5s ease forwards;
-    opacity: 0;
-    z-index: 10;
+    z-index: 9999;
+    transform: translateY(-50%);
+    animation: slide-in 2s ease forwards;
   }
   
-  @keyframes leafFloat {
+  @keyframes slide-in {
     0% {
+      transform: translateX(calc(var(--direction) * 0%)) translateY(-50%);
       opacity: 0;
-      transform: translate(-50%, -50%) translate(0, 0) rotate(var(--rotate)) scale(var(--scale));
     }
-    50% {
+    20% {
       opacity: 1;
     }
     100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) translate(var(--offset-x), var(--offset-y)) rotate(calc(var(--rotate) + 20deg)) scale(var(--scale));
-    }
-  }
-  
-  
-  @keyframes leaf-swing-in {
-    0% {
-      transform: translate(-50%, -50%) rotate(-90deg) scale(0.5);
+      transform: translateX(calc(var(--direction) * -100vw)) translateY(-50%);
       opacity: 0;
     }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg) scale(1);
-      opacity: 1;
-    }
   }
-
-
   
