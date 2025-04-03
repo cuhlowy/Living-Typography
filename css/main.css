@@ -1,208 +1,60 @@
-/* Place CSS styles here */
 body {
-    background-color: #eef2e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Playfair Display', serif;
-    overflow: hidden;
-}
-
-.container {
+    background: radial-gradient(circle at 50% 20%, #1a237e, #0d47a1, #000);
+    color: white;
     text-align: center;
-}
-
-h1 {
-    font-size: 30px;
-    color: #2c3e50;
-    transition: all 0.5s ease-in-out;
-    transform-origin: bottom center;
-}
-
-/* Growing Effect */
-h1.grow {
-    font-size: 100px;
-    color: #27ae60;
-    transform: scale(1.5);
-}
-
-/* Wind Effect (Subtle Sway) */
-@keyframes sway {
-    0% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
-    100% { transform: rotate(-3deg); }
-}
-
-h1.wind {
-    animation: sway 2s infinite alternate ease-in-out;
-}
-
-/* Rainforest Background */
-body {
-    background: linear-gradient(to bottom, #4c956c, #2c6e49);
-    height: 100vh;
+    font-family: 'Arial', sans-serif;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
-/* Fireflies */
-.firefly {
+.canvas {
+    position: relative;
+    height: 100vh;
+}
+
+.title {
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+.quote {
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
     position: absolute;
     width: 5px;
     height: 5px;
-    background-color: yellow;
+    background: white;
     border-radius: 50%;
-    opacity: 0.8;
-    animation: flicker 1.5s infinite alternate, float 5s infinite ease-in-out;
+    opacity: 0;
+    animation: twinkle 2s infinite alternate ease-in-out;
 }
 
-/* Flicker Effect */
-@keyframes flicker {
-    0% { opacity: 0.2; }
+@keyframes twinkle {
+    0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
-/* Floating Effect */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-20px); }
-}
-
-
-/* Base Text Style */
-#text {
-    font-size: 30px;
-    color: #2c3e50;
-    position: relative;
-    display: inline-block;
-    transition: all 1s ease-in-out;
-}
-
-/* Growing Effect */
-#text.grow {
-    font-size: 80px;
-    color: #2e7d32;
-    text-shadow: 2px 2px 5px rgba(0, 50, 0, 0.5);
-}
-
-/* Vines (Pseudo-elements for tendrils) */
-#text::before, #text::after {
-    content: "";
+.swirls {
     position: absolute;
-    width: 4px;
-    height: 0;
-    background-color: #2e7d32;
-    border-radius: 2px;
-    transition: height 2s ease-in-out;
-}
-
-/* Left Vine */
-#text::before {
-    left: -10px;
+    width: 100%;
+    height: 50vh;
     bottom: 0;
-    transform: rotate(-20deg);
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 50%), repeating-radial-gradient(circle, rgba(255,255,255,0.1) 5%, transparent 10%);
+    background-blend-mode: overlay;
+    transition: transform 1s ease-in-out;
 }
 
-/* Right Vine */
-#text::after {
-    right: -10px;
-    bottom: 0;
-    transform: rotate(20deg);
+.swirl-active {
+    transform: rotate(10deg) scale(1.1);
 }
-
-/* Animate the vines when text grows */
-#text.grow::before, #text.grow::after {
-    height: 100px;
-}
-
-/* Leaves Growing on the Vines */
-.leaf {
-    position: absolute;
-    width: 10px;
-    height: 20px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-/* Left Leaf */
-.leaf.left {
-    left: -15px;
-    bottom: 50px;
-    transform: rotate(-30deg) scale(0);
-}
-
-/* Right Leaf */
-.leaf.right {
-    right: -15px;
-    bottom: 60px;
-    transform: rotate(30deg) scale(0);
-}
-
-/* Animate leaves when text grows */
-#text.grow .leaf.left {
-    opacity: 1;
-    transform: rotate(-30deg) scale(1);
-}
-
-#text.grow .leaf.right {
-    opacity: 1;
-    transform: rotate(30deg) scale(1);
-}
-
-
-
-/* Vines */
-.vine {
-    position: absolute;
-    width: 4px;
-    height: 0; /* Start at 0, will grow */
-    background-color: #2e7d32;
-    border-radius: 2px;
-    bottom: -5px; /* Attach it properly to the bottom of text */
-    transition: height 2s ease-in-out;
-}
-
-/* Left Vine */
-.vine.left {
-    left: 10%; /* Adjusted to match text */
-    transform: rotate(-15deg);
-}
-
-/* Right Vine */
-.vine.right {
-    right: 10%; /* Adjusted to match text */
-    transform: rotate(15deg);
-}
-
-/* Leaves */
-.vine .leaf {
-    position: absolute;
-    width: 10px;
-    height: 20px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    opacity: 1;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-#grass-image {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-#grass-image.visible {
-    opacity: 1;
-}
-
-
