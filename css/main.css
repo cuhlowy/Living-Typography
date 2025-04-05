@@ -6,7 +6,29 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-
+.slide-from-right {
+    width: 300px;
+    height: auto;
+    z-index: 9999;
+    animation: slideRightIn 2s ease forwards;
+    pointer-events: none;
+  }
+  
+  @keyframes slideRightIn {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+  
+  
 
 .jungle-section {
   height: 100vh;

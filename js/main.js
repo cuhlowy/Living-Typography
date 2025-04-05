@@ -49,21 +49,20 @@ window.addEventListener('click', () => {
     wildText.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
   
-  // Leaves blow in from sides
-  document.addEventListener('mousemove', () => {
-    const img = document.createElement('img');
-    img.src = 'img/nh34_ox4b_210722.jpg'; // Your leaf image
-    img.className = 'leaf-slide';
+  document.addEventListener('click', () => {
+    const leaf = document.createElement('img');
+    leaf.src = 'img/leaf.png';
+    leaf.className = 'slide-from-right';
   
-    const fromLeft = Math.random() > 0.5;
-    img.style.left = fromLeft ? '-200px' : '100vw';
-    img.style.top = `${Math.random() * window.innerHeight}px`;
-    img.style.setProperty('--direction', fromLeft ? '1' : '-1');
+    // Position it on screen
+    leaf.style.position = 'fixed';
+    leaf.style.top = `${Math.random() * window.innerHeight}px`;
+    leaf.style.right = '0px';
   
-    document.body.appendChild(img);
+    document.body.appendChild(leaf);
   
     setTimeout(() => {
-      img.remove();
+      leaf.remove();
     }, 2000);
   });
   
