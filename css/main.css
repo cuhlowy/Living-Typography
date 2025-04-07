@@ -142,15 +142,25 @@ body {
       opacity: 0;
       transform: rotate(20deg) translateY(-50%);
     }
-    40% {
+    30% {
       left: 50px;
       opacity: 1;
       transform: rotate(0deg) translateY(-50%);
     }
-    60% {
+    50% {
       left: 50px;
       opacity: 1;
-      transform: rotate(0deg) translateY(-50%);
+      transform: rotate(0deg) translateY(-45%); /* swat upward */
+    }
+    70% {
+      left: 50px;
+      opacity: 1;
+      transform: rotate(0deg) translateY(-55%); /* swat downward */
+    }
+    90% {
+      left: 50px;
+      opacity: 1;
+      transform: rotate(0deg) translateY(-50%); /* center again */
     }
     100% {
       left: -300px;
@@ -159,20 +169,4 @@ body {
     }
   }
   
-  /* Claw mark styling */
-  .claw-mark {
-    position: fixed;
-    top: 50%;
-    left: 130px;
-    width: 100px;
-    transform: translateY(-50%);
-    z-index: 999;
-    opacity: 1;
-    animation: fadeOut 2s ease forwards;
-  }
-  
-  @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
   

@@ -30,16 +30,6 @@ window.addEventListener('click', () => {
           void paw.offsetWidth; // Reset animation
           paw.style.animation = 'swipeLeft 2s ease';
   
-          // 🐾 Add claw mark
-          const claw = document.createElement('img');
-          claw.src = 'img/claw-mark.png'; // Make sure this image exists!
-          claw.className = 'claw-mark';
-          document.body.appendChild(claw);
-  
-          setTimeout(() => {
-            claw.remove();
-          }, 2000);
-  
           paw.addEventListener('animationend', () => {
             paw.style.animation = '';
           }, { once: true });
