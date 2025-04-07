@@ -124,4 +124,55 @@ body {
     }
   }
 
+  /* Tiger paw swinging from left */
+#tiger-paw {
+    position: fixed;
+    top: 50%;
+    left: -300px;
+    width: 250px;
+    transform: translateY(-50%);
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  @keyframes swipeLeft {
+    0% {
+      left: -300px;
+      opacity: 0;
+      transform: rotate(20deg) translateY(-50%);
+    }
+    40% {
+      left: 50px;
+      opacity: 1;
+      transform: rotate(0deg) translateY(-50%);
+    }
+    60% {
+      left: 50px;
+      opacity: 1;
+      transform: rotate(0deg) translateY(-50%);
+    }
+    100% {
+      left: -300px;
+      opacity: 0;
+      transform: rotate(20deg) translateY(-50%);
+    }
+  }
+  
+  /* Claw mark styling */
+  .claw-mark {
+    position: fixed;
+    top: 50%;
+    left: 130px;
+    width: 100px;
+    transform: translateY(-50%);
+    z-index: 999;
+    opacity: 1;
+    animation: fadeOut 2s ease forwards;
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
   
