@@ -19,10 +19,13 @@ window.addEventListener('click', () => {
       const soundURL = word.getAttribute('data-sound');
       if (soundURL) {
         player.src = soundURL;
+        player.volume = 0.4; // 👈 lower the volume (range: 0.0 to 1.0)
         player.play();
       }
     });
   });
+
+  
   
   // Scroll-triggered fade-in for "The Jungle Sleeps"
   const fadeText = document.querySelector('.fade-in-text');
@@ -44,7 +47,7 @@ window.addEventListener('click', () => {
     const offsetX = (e.clientX - centerX) / centerX;
     const offsetY = (e.clientY - centerY) / centerY;
   
-    const maxTilt = 10;
+    const maxTilt = 20;
     const rotateX = offsetY * maxTilt * -1;
     const rotateY = offsetX * maxTilt;
   
@@ -52,7 +55,7 @@ window.addEventListener('click', () => {
   });
   
 
-  
+
   let nextY = 0; // Tracks where the next leaf should go
 
 document.addEventListener('click', (event) => {
