@@ -49,15 +49,14 @@ window.addEventListener('click', () => {
     wildText.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
   
+  // Leaves blow in from sides
   document.addEventListener('click', () => {
     const leaf = document.createElement('img');
     leaf.src = 'img/leaf.png';
     leaf.className = 'slide-from-right';
   
-    // Position it on screen
-    leaf.style.position = 'fixed';
+    // Random vertical position
     leaf.style.top = `${Math.random() * window.innerHeight}px`;
-    leaf.style.right = '0px';
   
     document.body.appendChild(leaf);
   

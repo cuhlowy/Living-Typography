@@ -1,162 +1,42 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
   <title>Living Typography</title>
-  <meta name="description" content="This site will serve as the hub for many sub responsive layouts">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive jungle typographic experience" />
   
-  <link rel="stylesheet" href="css/main.css" />
-  <script src="js/main.js" defer></script>
-  
-  
-
-  
-
-<style>
-  
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #0b3d0b;
-      color: white;
-      overflow-x: hidden;
-      position: relative;
-    }
-    .jungle-section {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .vine-text {
-      font-size: 6rem;
-      letter-spacing: 0.2em;
-      animation: swing 3s ease-in-out infinite alternate;
-    }
-    @keyframes swing {
-      0% { transform: rotate(-5deg); }
-      100% { transform: rotate(5deg); }
-    }
-    .animal-word {
-      font-size: 3rem;
-      margin: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s, color 0.3s;
-    }
-    .animal-word:hover {
-      transform: scale(1.3);
-      color: limegreen;
-    }
-    .night {
-      background: #011d01;
-    }
-    .fade-in-text {
-      font-size: 4rem;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 2s ease-out, transform 2s ease-out;
-    }
-    .fade-in-text.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .leaf {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Leaf_icon.svg/512px-Leaf_icon.svg.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      opacity: 0;
-      animation: leaf-swing-in 1.2s ease forwards;
-      pointer-events: none;
-    }
-    @keyframes leaf-swing-in {
-      0% {
-        transform: translate(-50%, -50%) rotate(-90deg) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
-        opacity: 1;
-      }
-    }
-  </style>
+  <!-- Styles and script -->
+  <link rel="stylesheet" href="main.css" />
+  <script src="main.js" defer></script>
 </head>
 
-
-
 <body>
-
-  <body>
+  <!-- Background jungle ambient audio -->
   <audio id="bg-audio" autoplay loop muted>
-    <source src="audio/nature-soundstropicaljunglebirds-108380.mp3" type="audio/mpeg">
+    <source src="audio/nature-soundstropicaljunglebirds-108380.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
-  
-
+  <!-- First jungle section -->
   <section class="jungle-section">
     <h1 id="wild" class="vine-text">WILD</h1>
     <p class="description">Scroll through the jungle of words.</p>
   </section>
 
+  <!-- Animal sounds section -->
   <section class="jungle-section">
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-lion-roar-1944.mp3">ROAR</div>
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-bird-chirp-2392.mp3">CHIRP</div>
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-snake-hiss-2182.mp3">HISS</div>
   </section>
 
+  <!-- Nighttime jungle message -->
   <section class="jungle-section night">
     <h2 class="fade-in-text">The Jungle Sleeps</h2>
   </section>
 
+  <!-- Hidden audio element for animal sounds -->
   <audio id="sound-player"></audio>
-
-  <script>
-    const animalWords = document.querySelectorAll('.animal-word');
-    const player = document.getElementById('sound-player');
-
-    animalWords.forEach(word => {
-      word.addEventListener('click', () => {
-        player.src = word.getAttribute('data-sound');
-        player.play();
-      });
-    });
-
-    // Scroll-triggered fade-in
-    const fadeText = document.querySelector('.fade-in-text');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fadeText.classList.add('visible');
-        }
-      });
-    });
-    observer.observe(fadeText);
-
-    // Mouse movement creates swinging leaves
-    document.addEventListener('mousemove', e => {
-      const leaf = document.createElement('div');
-      leaf.classList.add('leaf');
-      leaf.style.left = `${e.clientX}px`;
-      leaf.style.top = `${e.clientY}px`;
-      document.body.appendChild(leaf);
-
-      setTimeout(() => {
-        leaf.remove();
-      }, 1200);
-    });
-  </script>
 </body>
 </html>
