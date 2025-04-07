@@ -1,9 +1,15 @@
+
+const usedLeafSlots = [];
+const slotHeight = 100; // Minimum vertical space per leaf
+
+
+
 // Enable background jungle audio on first user click
 window.addEventListener('click', () => {
     const bgAudio = document.getElementById('bg-audio');
     if (bgAudio) {
       bgAudio.muted = false;
-      bgAudio.volume = 0.5; // Optional: adjust to taste
+      bgAudio.volume = 0.3; // Optional: adjust to taste
       bgAudio.play();
     }
   }, { once: true });
@@ -50,18 +56,23 @@ window.addEventListener('click', () => {
   });
   
   // Leaves blow in from sides
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('animal-word')) return;
+  
     const leaf = document.createElement('img');
     leaf.src = 'img/leaf.png';
-    leaf.className = 'slide-from-right';
+    leaf.classList.add('slide-in-leaf');
   
-    // Random vertical position
-    leaf.style.top = `${Math.random() * window.innerHeight}px`;
+    const y = Math.random() * (window.innerHeight - 100);
+    leaf.style.top = `${y}px`;
+  
+    const fromLeft = Math.random() < 0.5;
+    if (fromLeft) {
+      leaf.classList.add('left');
+    } else {
+      leaf.classList.add('right');
+    }
   
     document.body.appendChild(leaf);
-  
-    setTimeout(() => {
-      leaf.remove();
-    }, 2000);
   });
   

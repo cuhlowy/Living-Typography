@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Living Typography</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Interactive jungle typographic experience" />
-  
-  <!-- Styles and script -->
-  <link rel="stylesheet" href="main.css" />
-  <script src="main.js" defer></script>
+
+  <!-- Normalize + Styles -->
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
 </head>
 
 <body>
+
   <!-- Background jungle ambient audio -->
   <audio id="bg-audio" autoplay loop muted>
-    <source src="audio/nature-soundstropicaljunglebirds-108380.mp3" type="audio/mpeg" />
+    <source src="audio/nature-soundstropicaljunglebirds-108380.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- First jungle section -->
+  <!-- Jungle Title Section -->
   <section class="jungle-section">
     <h1 id="wild" class="vine-text">WILD</h1>
     <p class="description">Scroll through the jungle of words.</p>
   </section>
 
-  <!-- Animal sounds section -->
+  <!-- Animal Sound Section -->
   <section class="jungle-section">
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-lion-roar-1944.mp3">ROAR</div>
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-bird-chirp-2392.mp3">CHIRP</div>
     <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-snake-hiss-2182.mp3">HISS</div>
   </section>
 
-  <!-- Nighttime jungle message -->
+  <!-- Nighttime Jungle Section -->
   <section class="jungle-section night">
     <h2 class="fade-in-text">The Jungle Sleeps</h2>
   </section>
 
   <!-- Hidden audio element for animal sounds -->
   <audio id="sound-player"></audio>
+
 </body>
 </html>
