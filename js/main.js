@@ -1,8 +1,4 @@
 
-const usedLeafSlots = [];
-const slotHeight = 100; // Minimum vertical space per leaf
-
-
 
 // Enable background jungle audio on first user click
 window.addEventListener('click', () => {
@@ -55,24 +51,33 @@ window.addEventListener('click', () => {
     wildText.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
   
-  // Leaves blow in from sides
-  document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('animal-word')) return;
+
   
-    const leaf = document.createElement('img');
-    leaf.src = 'img/leaf.png';
-    leaf.classList.add('slide-in-leaf');
-  
-    const y = Math.random() * (window.innerHeight - 100);
-    leaf.style.top = `${y}px`;
-  
-    const fromLeft = Math.random() < 0.5;
-    if (fromLeft) {
-      leaf.classList.add('left');
-    } else {
-      leaf.classList.add('right');
-    }
-  
-    document.body.appendChild(leaf);
-  });
-  
+  let nextY = 0; // Tracks where the next leaf should go
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('animal-word')) return;
+
+  const leaf = document.createElement('img');
+  leaf.src = 'img/leaf.png';
+  leaf.classList.add('slide-in-leaf');
+
+  // Set vertical position with more spacing
+  leaf.style.top = `${nextY}px`;
+  nextY += 500;
+
+  // Reset if we run out of space
+  if (nextY > window.innerHeight - 100) {
+    nextY = 0;
+  }
+
+  // Random side
+  const fromLeft = Math.random() < 0.5;
+  if (fromLeft) {
+    leaf.classList.add('left');
+  } else {
+    leaf.classList.add('right');
+  }
+
+  document.body.appendChild(leaf);
+});
