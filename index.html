@@ -7,11 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Interactive jungle typographic experience" />
 
-  <!-- Normalize + Styles -->
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/main.css" />
 
-  <!-- JavaScript -->
   <script src="js/main.js" defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -19,33 +17,30 @@
 </head>
 
 <body>
-  <img id="tiger-paw" src="img/tiger.png" alt="Tiger Paw" />
-  <img id="jungle-bird" src="img/bird.png" alt="Bird" />
-  <img id="jungle-snake" src="img/snake.png" alt="Snake" />
+  <img id="tiger-paw" src="img/tiger.png" alt="Tiger Paw clawing from left" />
+<img id="jungle-bird" src="img/bird.png" alt="Bird slides in from right" />
+<img id="jungle-snake" src="img/snake.png" alt="Snake slides in from left" />
 
 
-  <!-- Background jungle ambient audio -->
   <audio id="bg-audio" autoplay loop muted>
     <source src="audio/nature-soundstropicaljunglebirds-108380.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
-  <!-- Jungle Title Section -->
   <section class="jungle-section">
-    <h1 id="wild">WILD</h1>
+    <h1 id="wild" aria-label="Wild jungle title">WILD</h1>
     <p class="description">Scroll through the jungle of words.</p>
   </section>
 
-  <!-- Animal Sound Section -->
   <section class="jungle-section">
-    <div class="animal-word" data-sound="audio/tiger-roar-loudly-193229.mp3">ROAR</div>
-    <div class="animal-word" data-sound="audio/bird_chirp.mp3">CHIRP</div>
-    <div class="animal-word" data-sound="audio/snake_rattle.mp3">HISS</div>
+    <div class="animal-word" role="button" tabindex="0" aria-label="Tiger roar sound and animation" data-sound="audio/tiger-roar-loudly-193229.mp3">ROAR</div>
+<div class="animal-word" role="button" tabindex="0" aria-label="Bird chirping sound and animation" data-sound="audio/bird_chirp.mp3">CHIRP</div>
+<div class="animal-word" role="button" tabindex="0" aria-label="Snake hissing sound and animation" data-sound="audio/snake_rattle.mp3">HISS</div>
+
   </section>
 
- 
-  <!-- Hidden audio element for animal sounds -->
+  
   <audio id="sound-player"></audio>
+  <audio id="leaf-sound" src="audio/rustling.mp3"></audio>
 
 </body>
 </html>
