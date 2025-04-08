@@ -20,79 +20,99 @@ window.addEventListener('click', () => {
   
         // Lower volume if it's the tiger roar
         if (soundURL.includes('tiger-roar')) {
-          player.volume = 0.4;
-  
-          // 🐅 Trigger tiger paw swing from left
-          const paw = document.getElementById('tiger-paw');
-          paw.style.opacity = '0';
-          paw.style.left = '-300px';
-          paw.style.animation = 'none';
-          void paw.offsetWidth; // Reset animation
-          paw.style.animation = 'swipeLeft 2s ease';
-  
-          paw.addEventListener('animationend', () => {
-            paw.style.animation = '';
-          }, { once: true });
-        } else {
-          player.volume = 1.0;
-        }
+            player.volume = 0.4;
+          
+            const paw = document.getElementById('tiger-paw');
+            paw.style.opacity = '0';
+            paw.style.left = '-300px';
+            paw.style.animation = 'none';
+            void paw.offsetWidth;
+            paw.style.animation = 'swipeLeft 2s ease';
+          
+            paw.addEventListener('animationend', () => {
+              paw.style.animation = '';
+            }, { once: true });
+          
+          } else if (soundURL.includes('bird_chirp') || soundURL.includes('chirp')) {
+            player.volume = 1.0;
+          
+            const bird = document.getElementById('jungle-bird');
+            bird.style.opacity = '0';
+            bird.style.right = '-300px';
+            bird.style.animation = 'none';
+            void bird.offsetWidth;
+            bird.style.animation = 'birdFlyLeft 2s ease';
+          
+            bird.addEventListener('animationend', () => {
+              bird.style.animation = '';
+            }, { once: true });
+
+        } else if (soundURL.includes('snake') || soundURL.includes('hiss')) {
+            player.volume = 1.0;
+          
+            const snake = document.getElementById('jungle-snake');
+            snake.style.opacity = '0';
+            snake.style.left = '-300px';
+            snake.style.animation = 'none';
+            void snake.offsetWidth;
+            snake.style.animation = 'snakeSlideLeft 2s ease';
+          
+            snake.addEventListener('animationend', () => {
+              snake.style.animation = '';
+            }, { once: true });
+          
+          
+          
+          } else {
+            player.volume = 1.0;
+          }
+          
   
         player.play();
       }
     });
   });
   
-  // Scroll-triggered fade-in for "The Jungle Sleeps"
-  const fadeText = document.querySelector('.fade-in-text');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        fadeText.classList.add('visible');
-      }
-    });
-  });
-  observer.observe(fadeText);
   
-  // "WILD" text blows with the wind (follows mouse)
-  const wildText = document.getElementById('wild');
-  document.addEventListener('mousemove', (e) => {
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
   
-    const offsetX = (e.clientX - centerX) / centerX;
-    const offsetY = (e.clientY - centerY) / centerY;
-  
-    const maxTilt = 20;
-    const rotateX = offsetY * maxTilt * -1;
-    const rotateY = offsetX * maxTilt;
-  
-    wildText.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
   
   // Jungle leaves slide in from sides and stack
   let nextY = 0;
-  
-  document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('animal-word')) return;
-  
-    const leaf = document.createElement('img');
-    leaf.src = 'img/leaf.png';
-    leaf.classList.add('slide-in-leaf');
-  
-    leaf.style.top = `${nextY}px`;
-    nextY += 500;
-  
-    if (nextY > window.innerHeight - 100) {
-      nextY = 0;
-    }
-  
-    const fromLeft = Math.random() < 0.5;
-    if (fromLeft) {
-      leaf.classList.add('left');
-    } else {
-      leaf.classList.add('right');
-    }
-  
-    document.body.appendChild(leaf);
+const leafSpacing = 180; // vertical distance between leaves
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('animal-word')) return;
+
+  const leaf = document.createElement('img');
+  leaf.src = 'img/leaf.png';
+  leaf.classList.add('slide-in-leaf');
+
+  // Set top position
+  leaf.style.top = `${nextY}px`;
+  nextY += leafSpacing;
+
+  // Reset to top if we reach bottom
+  if (nextY > window.innerHeight - leafSpacing) {
+    nextY = 0;
+  }
+
+  // Random side
+  const fromLeft = Math.random() < 0.5;
+  leaf.classList.add(fromLeft ? 'left' : 'right');
+
+  document.body.appendChild(leaf);
+});
+
+
+  gsap.to("#wild", {
+    keyframes: [
+      { rotate: -2, skewX: 5, duration: 1 },
+      { rotate: 2, skewX: -4, duration: 1 },
+      { rotate: 0, skewX: 1, duration: 1 }
+    ],
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
   });
+  
   

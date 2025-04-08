@@ -21,34 +21,6 @@ body {
   
   
 
-  .slide-in-leaf {
-    position: fixed;
-    height: auto;
-    width: clamp(500px, 20vw, 300px);
-    z-index: 9999;
-    pointer-events: none;
-  }
-  
-  .slide-in-leaf.right {
-    right: 0;
-    animation: slideFromRight 0.8s ease forwards;
-  }
-  
-  .slide-in-leaf.left {
-    left: 0;
-    transform: scaleX(-1);
-    animation: slideFromLeft 0.8s ease forwards;
-  }
-  
-  @keyframes slideFromRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-  
-  @keyframes slideFromLeft {
-    0% { transform: translateX(-100%) scaleX(-1); opacity: 0; }
-    100% { transform: translateX(0) scaleX(-1); opacity: 1; }
-  }
   
   
   
@@ -61,20 +33,15 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 20px;
     position: relative;
     overflow: hidden;
   }
   
-  .vine-text {
-    font-size: 6rem;
-    letter-spacing: 0.2em;
-    transition: transform 0.1s linear;
-  }
   
   .animal-word {
-    font-size: 3rem;
-    margin: 1rem;
+    font-size: 50px;
+    margin: 16px;
     cursor: pointer;
     transition: transform 0.3s, color 0.3s;
   }
@@ -84,45 +51,37 @@ body {
     color: limegreen;
   }
   
-  .night {
-    background: #011d01;
-  }
   
-  .fade-in-text {
-    font-size: 4rem;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 2s ease-out, transform 2s ease-out;
-  }
-  
-  .fade-in-text.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .leaf-slide {
-    position: absolute;
-    width: 150px;
+  .slide-in-leaf {
+    position: fixed;
+    width: clamp(450px, 20vw, 300px);
     height: auto;
+    top: 0;
+    z-index: 9999; /* must be above background */
     pointer-events: none;
-    z-index: 9999;
-    transform: translateY(-50%);
-    animation: slide-in 2s ease forwards;
   }
   
-  @keyframes slide-in {
-    0% {
-      transform: translateX(calc(var(--direction) * 0%)) translateY(-50%);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(calc(var(--direction) * -100vw)) translateY(-50%);
-      opacity: 0;
-    }
+  .slide-in-leaf.right {
+    right: 0;
+    animation: slideFromRight 1s ease forwards;
   }
+  
+  .slide-in-leaf.left {
+    left: 0;
+    transform: scaleX(-1);
+    animation: slideFromLeft 1s ease forwards;
+  }
+  
+  @keyframes slideFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideFromLeft {
+    0% { transform: translateX(-100%) scaleX(-1); opacity: 0; }
+    100% { transform: translateX(0) scaleX(-1); opacity: 1; }
+  }
+  
 
   /* Tiger paw swinging from left */
 #tiger-paw {
@@ -168,5 +127,128 @@ body {
       transform: rotate(20deg) translateY(-50%);
     }
   }
+
+  #jungle-bird {
+    position: fixed;
+    top: 30%;
+    right: -300px;
+    width: 200px;
+    transform: scaleX(-1); /* Flip image horizontally */
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+  }
   
+  @keyframes birdFlyLeft {
+    0% {
+      right: -300px;
+      opacity: 0;
+      transform: scaleX(-1) rotate(10deg);
+    }
+    30% {
+      right: 50px;
+      opacity: 1;
+      transform: scaleX(-1) rotate(0deg);
+    }
+    70% {
+      right: 50px;
+      opacity: 1;
+      transform: scaleX(-1) rotate(-5deg);
+    }
+    100% {
+      right: -300px;
+      opacity: 0;
+      transform: scaleX(-1) rotate(0deg);
+    }
+  }
+
+  
+  #jungle-bird {
+    position: fixed;
+    top: 30%;
+    right: -300px;
+    width: 200px;
+    transform: scaleX(-1); /* Flip to face left */
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  @keyframes birdFlyLeft {
+    0% {
+      right: -300px;
+      opacity: 0;
+      transform: scaleX(-1) rotate(10deg);
+    }
+    30% {
+      right: 70px;
+      opacity: 1;
+      transform: scaleX(-1) rotate(0deg);
+    }
+    70% {
+      right: 70px;
+      opacity: 1;
+      transform: scaleX(-1) rotate(-5deg);
+    }
+    100% {
+      right: -300px;
+      opacity: 0;
+      transform: scaleX(-1) rotate(0deg);
+    }
+  }
+  
+  #jungle-snake {
+    position: fixed;
+    top: 60%;
+    left: -300px;
+    width: 250px;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  @keyframes snakeSlideLeft {
+    0% {
+      left: -300px;
+      opacity: 0;
+      transform: rotate(-5deg);
+    }
+    30% {
+      left: 60px;
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    70% {
+      left: 60px;
+      opacity: 1;
+      transform: rotate(5deg);
+    }
+    100% {
+      left: -300px;
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+  }
+
+  
+
+  @media (max-width: 480px) {
+    #wild {
+      font-size: clamp(72px, 15vw, 120px);
+    }
+  
+    .animal-word {
+      font-size: clamp(60px, 16vw, 100px);
+    }
+  
+    #tiger-paw,
+    #jungle-snake,
+    #jungle-bird {
+      width: clamp(200px, 35vw, 400px);
+    }
+  
+    .slide-in-leaf {
+      width: clamp(300px, 40vw, 400px);
+    }
+  }
   

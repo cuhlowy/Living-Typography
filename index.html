@@ -13,10 +13,15 @@
 
   <!-- JavaScript -->
   <script src="js/main.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 </head>
 
 <body>
   <img id="tiger-paw" src="img/tiger.png" alt="Tiger Paw" />
+  <img id="jungle-bird" src="img/bird.png" alt="Bird" />
+  <img id="jungle-snake" src="img/snake.png" alt="Snake" />
 
 
   <!-- Background jungle ambient audio -->
@@ -27,23 +32,18 @@
 
   <!-- Jungle Title Section -->
   <section class="jungle-section">
-    <h1 id="wild" class="vine-text">WILD</h1>
+    <h1 id="wild">WILD</h1>
     <p class="description">Scroll through the jungle of words.</p>
   </section>
 
   <!-- Animal Sound Section -->
   <section class="jungle-section">
     <div class="animal-word" data-sound="audio/tiger-roar-loudly-193229.mp3">ROAR</div>
-
-    <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-bird-chirp-2392.mp3">CHIRP</div>
-    <div class="animal-word" data-sound="https://assets.mixkit.co/sfx/preview/mixkit-snake-hiss-2182.mp3">HISS</div>
+    <div class="animal-word" data-sound="audio/bird_chirp.mp3">CHIRP</div>
+    <div class="animal-word" data-sound="audio/snake_rattle.mp3">HISS</div>
   </section>
 
-  <!-- Nighttime Jungle Section -->
-  <section class="jungle-section night">
-    <h2 class="fade-in-text">The Jungle Sleeps</h2>
-  </section>
-
+ 
   <!-- Hidden audio element for animal sounds -->
   <audio id="sound-player"></audio>
 
